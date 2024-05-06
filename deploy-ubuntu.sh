@@ -22,4 +22,12 @@ cd /root/konflux-ci
 kind create cluster --name konflux --config ./kind-config.yaml
 podman update --pids-limit 4096 konflux-control-plane
 
+# install konflux deps
+cd /root/konflux-ci/
+./deploy-deps.sh
 
+# install Konflux-ci
+./deploy-konflux.sh
+
+#Deploy demo users
+./deploy-test-resources.sh
